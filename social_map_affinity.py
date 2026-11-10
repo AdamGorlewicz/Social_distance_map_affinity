@@ -8,11 +8,11 @@ from urllib.parse import quote
 
 
 # Input files for one session.
-RANKING_CSV = Path(r"ranking.csv")
-MATCH_CSV = Path(r"pairwise_meetings.csv")
+RANKING_CSV = Path(r"C:\Users\agorlewicz\Desktop\EcoHab\do chmury\example data\ranking.csv")
+MATCH_CSV = Path(r"C:\Users\agorlewicz\Desktop\EcoHab\do chmury\example data\pairwise_meetings.csv")
 
 # Output directory for social maps.
-OUTPUT_DIR = Path(r"results_affinity")
+OUTPUT_DIR = Path(r"C:\Users\agorlewicz\Desktop\EcoHab\do chmury\results_affinity")
 
 # Analysis and plot settings.
 N_DARK_PHASES = None  # Use a positive integer or None to include all phases.
@@ -115,7 +115,6 @@ def load_session(ranking_file, match_file):
     return {
         "session": name,
         "mice": mice,
-        "mean_fraction": match_matrix,
         "affinity_matrix": affinity,
         "power_matrix": power_matrix,
         "distance_matrix": np.hypot(affinity - EGO_POSITION[0], power_matrix - EGO_POSITION[1]),
@@ -223,7 +222,6 @@ def main():
     diagonal = np.eye(len(mice), dtype=bool)
 
     for filename, matrix in (
-        ("mean_fraction.xlsx", session["mean_fraction"]),
         ("affinity.xlsx", session["affinity_matrix"]),
         ("social_distance.xlsx", session["distance_matrix"]),
         ("power.xlsx", session["power_matrix"]),
