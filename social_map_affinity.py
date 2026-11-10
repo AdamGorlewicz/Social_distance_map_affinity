@@ -8,11 +8,11 @@ from urllib.parse import quote
 
 
 # Input files for one session.
-RANKING_CSV = Path(r"C:\Users\agorlewicz\Desktop\EcoHab\do chmury\example data\ranking.csv")
-MATCH_CSV = Path(r"C:\Users\agorlewicz\Desktop\EcoHab\do chmury\example data\pairwise_meetings.csv")
+RANKING_CSV = Path(r"ranking.csv")
+MATCH_CSV = Path(r"pairwise_meetings.csv")
 
 # Output directory for social maps.
-OUTPUT_DIR = Path(r"C:\Users\agorlewicz\Desktop\EcoHab\do chmury\results_affinity")
+OUTPUT_DIR = Path(r"results_affinity")
 
 # Analysis and plot settings.
 N_DARK_PHASES = None  # Use a positive integer or None to include all phases.
