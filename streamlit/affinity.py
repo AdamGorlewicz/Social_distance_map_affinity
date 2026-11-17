@@ -51,9 +51,10 @@ def load_data(ranking_file, meetings_file):
 # ranks contains the rank of each animal in each phase, 
 # and mean_rank contains each animal’s average rank across all phases.
 
-def calculate_ranking(ranking, meetings):
-    phases = meetings[["day", "hour", "phase", "phase_count"]].drop_duplicates()
-    data = ranking.merge(phases, on=["day", "hour", "phase"])
+def calculate_ranking(ranking, chasing):
+    keys = ["day", "hour", "phase"]
+    phases = chasing[keys + ["phase_count"]].drop_duplicates()
+    data = ranking.drop(columns="phase_count", errors="ignore").merge(phases, on=keys)
     mean_mu = data.groupby(["phase", "phase_count", "animal_id"])["mu"].mean()
     scores = mean_mu.unstack("animal_id")
     ranks = scores.rank(axis=1, ascending=False)
